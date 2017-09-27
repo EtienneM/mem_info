@@ -67,6 +67,10 @@ class MemInfo
     @memtotal - @memfree
   end
 
+  def swapused
+    @swaptotal - @swapfree
+  end
+
   def free_buffers
     @memfree + @buffers + @cached
   end
