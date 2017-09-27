@@ -4,18 +4,18 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "mem_info"
+    gem.name = 'mem_info'
     gem.summary = %Q{Ruby wrapper for /proc/meminfo data}
     gem.description = %Q{Ruby wrapper for /proc/meminfo data}
-    gem.email = "watsonian@gmail.com"
-    gem.homepage = "http://github.com/watsonian/mem_info"
-    gem.authors = ["watsonian"]
-    gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.email = 'etienne@scalingo.com'
+    gem.homepage = 'http://github.com/EtienneM/mem_info'
+    gem.authors = ['watsonian', 'EtienneM']
+    gem.add_development_dependency 'rspec', '>= 1.2.9'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+  puts 'Jeweler (or a dependency) not available. Install it with: gem install jeweler'
 end
 
 require 'spec/rake/spectask'
@@ -36,7 +36,7 @@ task :default => :spec
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+  version = File.exist?('VERSION') ? File.read('VERSION') : ''
 
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "mem_info #{version}"
