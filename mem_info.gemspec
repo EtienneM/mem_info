@@ -8,10 +8,10 @@ Gem::Specification.new do |s|
   s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["watsonian"]
+  s.authors = ["watsonian", "EtienneM"]
   s.date = "2012-09-04"
   s.description = "Ruby wrapper for /proc/meminfo data"
-  s.email = "watsonian@gmail.com"
+  s.email = "etienne@scalingo.com"
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
@@ -28,10 +28,11 @@ Gem::Specification.new do |s|
     "spec/spec.opts",
     "spec/spec_helper.rb"
   ]
-  s.homepage = "http://github.com/watsonian/mem_info"
+  s.homepage = "http://github.com/EtienneM/mem_info"
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
   s.summary = "Ruby wrapper for /proc/meminfo data"
+  s.license = "MIT"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
