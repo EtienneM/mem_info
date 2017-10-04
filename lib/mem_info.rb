@@ -46,12 +46,10 @@ class MemInfo
   }
 
 
-  def initialize
-    if not File.exists?('/proc/meminfo')
-      raise NoProcData, "This system doesn't have /proc/meminfo data."
-    end
+  def initialize(meminfo_file = '/proc/meminfo')
+    raise NoProcData, "This system doesn't have /proc/meminfo data." if not File.exists?(meminfo_file)
 
-    File.open('/proc/meminfo', 'r') do |file|
+    File.open(meminfo_file, 'r') do |file|
       data = file.read
       @@attributes.keys.each do |attribute|
         value, unit = regex_match(attribute, data)
@@ -71,16 +69,17 @@ class MemInfo
     @swaptotal - @swapfree
   end
 
-  def free_buffers
+  def memavailable
     @memfree + @buffers + @cached
   end
 
   private
-    def regex_match(attribute, line)
-      regex = Regexp.new("#{@@attributes[attribute]}:[[:space:]]*([[:digit:]]*) ([[:alpha:]]*)")
-      m = regex.match(line)
-      if regex === line
-        return m[1], m[2]
-      end
+
+  def regex_match(attribute, line)
+    regex = Regexp.new("#{@@attributes[attribute]}:[[:space:]]*([[:digit:]]*) ([[:alpha:]]*)")
+    m = regex.match(line)
+    if regex === line
+      return m[1], m[2]
     end
+  end
 end
