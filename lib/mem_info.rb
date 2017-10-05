@@ -1,4 +1,10 @@
 class MemInfo
+  #
+  # This class read memory information from the /proc/meminfo file.
+  #
+  # All the values returned by this class are in kilobytes.
+  #
+
   class NoProcData < Exception; end
 
   # Contains the data in kilobytes
@@ -61,14 +67,28 @@ class MemInfo
     end
   end
 
+  # Memory currently in use.
+  #
+  # We substract the free amount of memory to the total.
   def memused
     @memtotal - @memfree
   end
 
+  # Swap currently in use.
+  #
+  # We substract the free amount of swap to the total.
   def swapused
     @swaptotal - @swapfree
   end
 
+  # Memory available in the system. It is not just the free memory.
+  #
+  # The available memory is actually what the `free` command line tool calls `-/+ buffers/cache`. It
+  # uses information from /proc/meminfo: it sums the MemFree, the Buffers and the Cached.
+  #
+  # cf. `free` source code: https://github.com/mmalecki/procps/blob/fe4c4a7314f32907b9f558ad0d8b8d0ff1cc76be/free.c#L97
+  # cf. man 5 proc
+  #
   def memavailable
     @memfree + @buffers + @cached
   end
