@@ -1,3 +1,6 @@
+# [DEPRECATED] In favor of the more global [`proc_parser`](https://github.com/EtienneM/proc_parser) gem
+
+
 # mem_info
 
 This is a lightweight library that wraps access to the data in /proc/meminfo found in many linux variants, which contains live memory usage information about a machine.
