@@ -89,7 +89,7 @@ class MemInfo
   # cf. `free` source code: https://github.com/mmalecki/procps/blob/fe4c4a7314f32907b9f558ad0d8b8d0ff1cc76be/free.c#L97
   # cf. man 5 proc
   #
-  def memavailable
+  def free_buffers
     @memfree + @buffers + @cached
   end
 

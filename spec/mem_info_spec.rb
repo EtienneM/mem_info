@@ -43,10 +43,10 @@ RSpec.describe MemInfo do
     end
   end
 
-  describe '#memavailable' do
-    it 'should compute the memory available' do
+  describe '#free_buffers' do
+    it 'should compute the memory really available (free + buffers and cached)' do
       c = MemInfo.new('./spec/fixtures/meminfo')
-      expect(c.memavailable).to eq 4634064
+      expect(c.free_buffers).to eq 4634064
     end
   end
 end
